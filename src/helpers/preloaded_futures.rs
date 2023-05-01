@@ -46,6 +46,6 @@ where
     fn next(&self) -> Option<Self::Output<'_>> {
         let next_item = { self.storage.borrow_mut().pop_front() };
 
-        next_item.map(|el| async move { el.await })
+        next_item
     }
 }

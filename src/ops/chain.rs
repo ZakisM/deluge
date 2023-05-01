@@ -49,6 +49,6 @@ where
             }
         };
 
-        result.map(|v| async move { v.await })
+        result
     }
 }

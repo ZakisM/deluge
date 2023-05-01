@@ -6,7 +6,7 @@ use crate::Deluge;
 /// can be converted into `Deluge`.
 pub trait IntoDeluge<T>
 where
-    T: Deluge
+    T: Deluge,
 {
     fn into_deluge(self) -> T
     where
@@ -26,7 +26,7 @@ where
 
 impl<T> IntoDeluge<T> for T
 where
-    T: Deluge
+    T: Deluge,
 {
     fn into_deluge(self) -> Self {
         self

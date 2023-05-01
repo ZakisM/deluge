@@ -541,7 +541,6 @@ pub trait DelugeExt: Deluge {
 mod tests {
     use super::*;
     use crate::into_deluge::IntoDeluge;
-    use crate::iter::iter;
     use more_asserts::{assert_gt, assert_lt};
     use std::sync::Arc;
     use std::time::{Duration, Instant};
@@ -632,7 +631,8 @@ mod tests {
     async fn all_works() {
         let result = [1, 2, 3, 4]
             .into_deluge()
-            .all(None, |x| async move { x < 5 }).await;
+            .all(None, |x| async move { x < 5 })
+            .await;
 
         assert!(result);
     }
@@ -953,7 +953,8 @@ mod tests {
             idx
         });
 
-        let result = (0..100).rev()
+        let result = (0..100)
+            .rev()
             .into_deluge()
             .map(|idx| async move {
                 tokio::time::sleep(Duration::from_millis(idx)).await;
